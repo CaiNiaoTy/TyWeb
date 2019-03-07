@@ -2,6 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <!--为搜索引擎定义关键字-->
+    <meta name="keywords" content="blog" />
+    <meta name="description" content="This is TyCottage" />
+    <meta name="author" content="Tyx" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>TyCottage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,11 +13,19 @@
     <link rel="stylesheet" type="text/css" href="../static/css/login.css" >
 </head>
 <body>
-    <div class="login_body">
-        <div class="login_box">
-            <h3 class="login_title_name">TyCottage</h3>
-            <input type="text" class="user" autofocus="autofocus"><br/>
-            <input type="password" class="passwd"><br/>
+    <div name="login_body" id="login_body">
+        <div name="ui" id="ui" >
+            <div style="left: 50%; position: relative; margin-left: -25px" ><img src="../static/img/icon.png" alt="Icon" width="50px" height="50px"/></div>
+            <h3 style="text-align:center;margin-top: 0px">Sign in to TyCottage</h3>
+        </div>
+        <div id="login_box">
+            <form action="/login" method="POST">
+                <span><b>Username or email address</b></span>
+                <div><input name="username" type="text" autofocus="autofocus" ></div>
+                <span><b>Password</b></span>
+                <div><input name="passwd" type="password"></div>
+                <div><input id="sign_in" value="Sign in" type="submit" /></div>
+            </form>
         </div>
     </div>
 </body>
