@@ -3,6 +3,8 @@ package controllers
 import (
 	"net/http"
 
+	"TyWeb/models/dao"
+
 	"github.com/astaxie/beego"
 )
 
@@ -13,9 +15,15 @@ type LoginController struct {
 
 // Post ....
 func (l *LoginController) Post() {
-	if l.Ctx.Input.Param("username") == "1" {
+
+	name := l.GetString("username")
+	passwd := l.GetString("passwd")
+	ok := dao.SelectUserTable(name, passwd)
+	if ok {
 		l.Ctx.WriteString("Hello World")
 	}
 	l.Ctx.ResponseWriter.WriteHeader(http.StatusBadRequest)
-	l.Redirect("/", 302)
+	l.Data["json"] = "用户名或密码错误"
+	l.ServeJSON()
+	l.Finish()
 }
